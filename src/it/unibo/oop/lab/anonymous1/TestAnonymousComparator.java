@@ -1,6 +1,7 @@
 package it.unibo.oop.lab.anonymous1;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import it.unibo.oop.lab.socialnetwork.SocialNetworkUser;
@@ -34,8 +35,8 @@ public final class TestAnonymousComparator {
      * @return true is result's users are in the same order as expected's users
      */
     public static boolean checkUserOrder(final List<User> expected, final List<User> result) {
-        for (int i = 0; i < expected.size(); i++) {
-            if (!expected.get(i).equals(result.get(i))) {
+        for (int i = 0; i < expected.size(); i++) {       	
+        	if (!expected.get(i).equals(result.get(i))){
                 System.out.println("[EXCEPTION] [POS. " + i + "] [EXPECTED] " + expected.get(i) + " [GOT] " + result.get(i));
                 return false;
             }
@@ -75,6 +76,14 @@ public final class TestAnonymousComparator {
          * REFER TO LESSON 13-Advanced-Mechanisms.pdf, slide 41
          */
         // TODO
+        java.util.Collections.sort(denzelUsers, new Comparator<User>() {
+
+			@Override
+			public int compare(User o1, User o2) {
+				return o1.getAge() - o2.getAge();
+			}
+        	
+        });
         /*
          * expected Result
          */
@@ -106,6 +115,14 @@ public final class TestAnonymousComparator {
          * class Collections
          */
         // TODO
+        java.util.Collections.sort(rossiUsers,new Comparator<User>() {
+
+			@Override
+			public int compare(User o1, User o2) {
+				return o2.getAge() - o1.getAge();
+			}
+        	
+        });
         /*
          * expected Result
          */
